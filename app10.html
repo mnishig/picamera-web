@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=1024, initial-scale=1"/>
+	<title>streaming</title>
+	<style type="text/css">
+  div.preview {
+    width: 80%;
+  }
+  img.preview {
+    max-width: 100%;
+    height: auto;
+  }
+  div.toolbar {
+    margin-bottom: 8px;
+  }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <div class="toolbar">
+      <button id="takeButton">shutter</button>
+    </div>
+    <div class="preview">
+      <img src="{{stream_url}}" class="preview">
+      <!-- <img src="http://exhd-b5b8f1.local:8080/?action=stream" class="preview"> -->      
+    </div>
+  </div>
+	<script type="text/javascript">
+  const btn = document.getElementById('takeButton');
+  btn.addEventListener('click', () => {
+
+    const url = location.origin + '/snapshot'
+    const xhr =  new XMLHttpRequest()
+
+    console.log('url:', url)
+    xhr.open('GET', url);
+    xhr.send()
+
+    xhr.onload = () => {
+      if (xhr.status != 200) { // レスポンスの HTTP ステータスを解析
+            console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
+      } else { // show the result
+        console.log(`Done, got ${xhr.response.length} bytes`); // responseText is the server
+        console.log(xhr.response); // responseText is the server 
+      }
+    };
+    console.log('send !! -- wait response');
+
+  });
+	</script>
+</body>
+</html>
