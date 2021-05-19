@@ -24,7 +24,7 @@ $ python3 app10.py
 
 ## Configuration
 
-please adjuct your consfiguration to edit config.json
+please adjust your consfiguration to edit config.json
 
 |Key|Description|
 |-|-|
