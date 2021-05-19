@@ -3,6 +3,10 @@
 This repository is very simple raspberry pi camera app.
 App can preview via web and take snapshot store on sd card.
 
+## version
+
+0.1
+
 ## system
 
 - Web framework: bottle
@@ -16,32 +20,27 @@ App can preview via web and take snapshot store on sd card.
 $ pip3 install requirement.txt
 $ python3 app10.py
 ```
+<br>
 
-## configuration
+## Configuration
 
 please adjuct your consfiguration to edit config.json
 
-Host: bind network address (default: 0.0.0.0)
+|Key|Description|
+|-|-|
+|Host| bind network address (default: 0.0.0.0)|
+|Port| bind port (default: 8011)|
+|SnapshotURL| snapshot url. (in case of mjpg-streame: [raspi host]/?actino=snapshot )|
+|StreamURL| stream url. (in case of mjpg-streame: [raspi host]/?actino=straem )|
+|Template| web ui template|
+|Debug| debug mode flag (debud mode dose not implemented yet)|
+
 <br>
 
-Port: bind port (default: 8011)
-<br>
+## Loadmap
 
-SnapshotURL: snapshot url. (in case of mjpg-streame: [raspi host]/?actino=snapshot )
-<br>
-
-StreamURL: stream url. (in case of mjpg-streame: [raspi host]/?actino=straem )
-<br>
-
-Template: web ui template
-<br>
-
-Debug: debug mode flag (debud mode dose not implemented yet)
-<br>
-
-## loadmap
-
-| version | description |
+| version | description|
+|---------|--------------------------------------------|
 | 0.1 | simple function implemented. |
 | 0.2 | improve UI |
 | 0.3 | ??? |
