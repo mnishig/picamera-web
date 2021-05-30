@@ -3,6 +3,6 @@
     "Port": "8011",
     "SnapshotURL": "http://exhd-b5b8f1.local:8080/?action=snapshot",
     "StreamURL": "http://exhd-b5b8f1.local:8080/?action=stream",
-    "Template": "app10.html",
+    "Template": "app-mjpg-streamer.html",
     "Debug": true
 }

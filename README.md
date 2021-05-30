@@ -17,8 +17,8 @@ App can preview via web and take snapshot store on sd card.
 ## Usage
 
 ```
-$ pip3 install requirement.txt
-$ python3 app10.py
+$ pip3 install -r requirements.txt
+$ python3 app-mjpg-streamer.py
 ```
 <br>
 
@@ -31,10 +31,13 @@ please adjust your consfiguration to edit config.json
 |Host| bind network address (default: 0.0.0.0)|
 |Port| bind port (default: 8011)|
 |SnapshotURL| snapshot url. (in case of mjpg-streame: [raspi host]/?actino=snapshot )|
-|StreamURL| stream url. (in case of mjpg-streame: [raspi host]/?actino=straem )|
+|StreamURL| stream url. <br>(in case of mjpg-streame: [raspi host]/?actino=straem) |
 |Template| web ui template|
 |Debug| debug mode flag (debud mode dose not implemented yet)|
+<br>
 
+You can use uStreamer: these URL like follwing.<br>
+- StreamURL: [raspi host]/stream
 <br>
 
 ## Loadmap
