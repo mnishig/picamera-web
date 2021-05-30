@@ -1,4 +1,6 @@
 # app.py を flask-video-streaming のキャプチャ処理に差し替えてみる
+# https://github.com/miguelgrinberg/flask-video-streaming/blob/master/camera.py
+
 from util import gen_tempname
 
 import io
@@ -104,12 +106,17 @@ HOST = '0.0.0.0'
 PORT = 8080
 DEBUG = True
 TEMPLATE = 'app-waitress.html'
+THREADS = 3
 
 app = Bottle()
 
 @app.route('/')
 def index():
     return static_file(TEMPLATE, root='./')
+
+@app.route('/config')
+def config():
+    return 'not implemented yet.'
 
 @app.route('/take')
 def take():
