@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=1024, initial-scale=1"/>
+	<title>streaming</title>
+	<style type="text/css">
+  </style>
+</head>
+<body>
+	<!-- <canvas id="videoCanvas" width="" height="">
+		<p>
+			Please use a browser that supports the Canvas Element, like
+			<a href="http://www.google.com/chrome">Chrome</a>,
+			<a href="http://www.mozilla.com/firefox/">Firefox</a>,
+			<a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
+		</p>
+	</canvas> -->
+  <div>
+    <button id="takeButton">shutter</button>
+  </div>
+  <div>
+    <img src="./streaming">
+  </div>
+	<script type="text/javascript">
+  const btn = document.getElementById('takeButton');
+  btn.addEventListener(`click`, () => {
+
+    const url = location.origin + '/take'
+    const xhr =  new XMLHttpRequest()
+    // xhr.onreadystatechange = () => {
+    //   if (this.readyState == 4 && this.status == 201) {
+    //     console.log('send compete: ' + xhr.response);
+    //   }
+    //   else if (this.readyState == 4) {
+    //     alert('送信失敗');
+    //   }
+    // }
+    console.log('url:', url)
+    xhr.open('GET', url);
+    xhr.send()
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+    // xhr.send(JSON.stringify(''));
+    xhr.onload = () => {
+      if (xhr.status != 200) { // レスポンスの HTTP ステータスを解析
+            console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
+      } else { // show the result
+        console.log(`Done, got ${xhr.response.length} bytes`); // responseText is the server
+        console.log(xhr.response); // responseText is the server 
+      }
+    };
+    console.log('send !! -- wait response');
+
+  });
+	</script>
+</body>
+</html>
