@@ -105,7 +105,8 @@ class Camera(object):
 HOST = '0.0.0.0'
 PORT = 8080
 DEBUG = True
-TEMPLATE = 'app-waitress.html'
+# TEMPLATE = 'app-waitress.html'
+TEMPLATE = './front/index.html'
 THREADS = 3
 
 app = Bottle()
@@ -117,6 +118,20 @@ def index():
 @app.route('/config')
 def config():
     return 'not implemented yet.'
+
+#　static 
+@app.route('/css/<path:path>')
+def css(path):
+    return static_file(path, root='./front/css/')
+
+@app.route('/js/<path:path>')
+def js(path):
+    return static_file(path, root='./front/js/')
+
+@app.route('/imgs/<path:path>')
+def imgs(path):
+    return static_file(path, root='./front/imgs/')
+
 
 @app.route('/take')
 def take():

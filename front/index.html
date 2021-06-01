@@ -11,32 +11,28 @@
   <body>
     <section class="section">
       <div class="container">
-        <img class="finder" width="800px" height="600px">
+        <img src="./streaming" class="finder" width="800px" height="600px">
         <div class="columns is-vcentered">
           <div class="column">
             <p>
-              <span class="app-title">
-                PiCamera Web
-              </span>
+              <span class="app-title">PiCamera Web</span>
             </p>
           </div>
           <div class="column has-text-centered">
-              <button class="button shutter is-large">
-                <span class="icon">
+            <button id="shutter" class="button shutter is-large">
+              <span class="icon">
                 <!-- <ion-icon name="camera-outline"></ion-icon>       -->
-                <img src="./icons/photo_camera_black_48dp.svg" alt="shutter">
+                <img src="./imgs/photo_camera_black_48dp.svg" alt="shutter">
               </span>
             </button>
           </div>
-          <div class="column">
-            <div class="has-text-right">
-              <button class="button config is-normal">
-                <span class="icon is-small">
-                  <!-- <ion-icon name="settings-outline"></ion-icon> -->
-                  <img src="./icons/settings_black_24dp.svg" alt="settings">
-                </span>
-              </button>
-            </div>
+          <div class="column has-text-right">
+            <button id="config" class="button config is-normal">
+              <span class="icon is-small">
+                <!-- <ion-icon name="settings-outline"></ion-icon> -->
+                <img src="./imgs/settings_black_24dp.svg" alt="settings">
+              </span>
+            </button>
           </div>
         </div>
         <!-- end columns -->
@@ -44,5 +40,28 @@
     </section>
     <!-- <script src="https://unpkg.`/ionicons@5.4.0/dist/ionicons.js"></script> -->
     <!--XXX <script src="https://unpkg.com/ionicons@5.5.1/dist/index.js"></script> -->
+    <script type="text/javascript">
+    const btn = document.getElementById('shutter');
+    btn.addEventListener(`click`, () => {
+
+      const url = location.origin + '/take'
+      const xhr =  new XMLHttpRequest()
+      console.log('url:', url)
+      xhr.open('GET', url);
+      xhr.send()
+      // xhr.setRequestHeader('Content-Type', 'application/json');
+      // xhr.send(JSON.stringify(''));
+      xhr.onload = () => {
+        if (xhr.status != 200) { // レスポンスの HTTP ステータスを解析
+            console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
+        } else { // show the result
+            console.log(`Done, got ${xhr.response.length} bytes`); // responseText is the server
+            console.log(xhr.response); // responseText is the server 
+        }
+      };
+      console.log('send !! -- wait response');
+  
+    });
+    </script>
   </body>
 </html>
