@@ -152,5 +152,5 @@ def streaming():
 
 
 import waitress
-waitress.serve(app, host=HOST, port=PORT, Threads=THREADS)
+waitress.serve(app, host=HOST, port=PORT, threads=THREADS)
 
