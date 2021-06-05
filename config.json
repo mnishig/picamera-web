@@ -1,8 +1,13 @@
 {
     "Host": "0.0.0.0",
     "Port": "8011",
+    "Template": "./front/index.html",
     "SnapshotURL": "http://exhd-b5b8f1.local:8080/?action=snapshot",
     "StreamURL": "http://exhd-b5b8f1.local:8080/?action=stream",
-    "Template": "app-mjpg-streamer.html",
-    "Debug": true
+    "Threads": 3,
+    "Debug": true,
+    "Camera": {
+        "Width": 800,
+        "Height": 600
+    }
 }

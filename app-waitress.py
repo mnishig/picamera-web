@@ -15,6 +15,7 @@ from bottle import (
     static_file
 )
 import picamera
+import waitress
 
 # from flask-video-streaming
 import threading
@@ -102,12 +103,6 @@ class Camera(object):
         Camera.thread = None
 # end of from flask-video-streaming
 
-HOST = '0.0.0.0'
-PORT = 8080
-DEBUG = True
-# TEMPLATE = 'app-waitress.html'
-TEMPLATE = './front/index.html'
-THREADS = 3
 
 app = Bottle()
 
@@ -165,7 +160,20 @@ def streaming():
     # return gen(CAMERA)
     return gen(Camera())
 
+# initialize 
+with open('config.json', 'r') as f:
+    conf = json.load(f)
 
-import waitress
-waitress.serve(app, host=HOST, port=PORT, threads=THREADS)
+HOST = conf['Host']
+PORT = conf['Port']
+SNAPSHOT_URL = conf['SnapshotURL']
+STREAM_URL = conf['StreamURL']
+TEMPLATE = conf['Template']
+THREADS = conf['Threads']
+DEBUG = conf['Debug']
+
+if __name__ == "__main__":
+
+
+    waitress.serve(app, host=HOST, port=PORT, threads=THREADS)
 
